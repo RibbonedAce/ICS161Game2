@@ -29,7 +29,7 @@ public class SpawnEnemy : MonoBehaviour {
                 Vector3 SpawnPosition = new Vector3
                 (
                      Random.Range(-SpawnLocation.x, SpawnLocation.x),
-                     Random.Range(-2.0f,SpawnLocation.y),
+                     6.0f,
                      0.0f
                 );
                 Quaternion SpawnRotation = Quaternion.identity;

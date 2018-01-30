@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
     public int maxHealth;
     private int health;
+    public float speed;
 
     void Awake ()
     {
@@ -21,7 +22,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
+        MoveDown();
 	}
 
     // When the collider hits a trigger
@@ -43,5 +44,11 @@ public class Enemy : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+    }
+
+    private void MoveDown()
+    {
+        Vector2 velocity = new Vector2(0.0f, -1.0f);
+        GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + velocity * speed * Time.deltaTime);
     }
 }
