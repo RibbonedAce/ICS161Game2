@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController {
-    public static int score;   // The player's score
+    public static int score;        // The player's score
     
     // Add score by an amount
     public static void AddScore (int value)

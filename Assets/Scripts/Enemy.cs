@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour {
-    public int maxHealth;
-    private int health;
-    public float speed;
+    public int maxHealth;               // The starting health of the enemy
+    private int health;                 // The current health of the enemy
+    public float speed;                 // The speed the enemy moves at
+    private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
 
     void Awake ()
     {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         health = maxHealth;
     }
 
@@ -23,15 +26,20 @@ public class Enemy : MonoBehaviour {
 	void Update ()
     {
         MoveDown();
+        if (_rigidbody2D.position.y < -5)
+        {
+            PlayerController.instance.ChangeHealth(PlayerController.instance.health - 1);
+            Destroy(gameObject);
+        }
 	}
 
     // When the collider hits a trigger
     void OnTriggerEnter2D (Collider2D collision)
     {
-        ++Laser.combo;
-        GameController.AddScore(100);
         if (collision.CompareTag("Mouse"))
         {
+            ++Laser.combo;
+            GameController.AddScore(100);
             ChangeHealth(-1);
         }
     }
@@ -49,6 +57,6 @@ public class Enemy : MonoBehaviour {
     private void MoveDown()
     {
         Vector2 velocity = new Vector2(0.0f, -1.0f);
-        GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + velocity * speed * Time.deltaTime);
+        _rigidbody2D.MovePosition(_rigidbody2D.position + velocity * speed * Time.deltaTime);
     }
 }

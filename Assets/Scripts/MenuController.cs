@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
     public List<GameObject> menuItems;
     public int startState;
-    private bool paused = false;
 
     void Awake ()
     {
@@ -16,17 +15,7 @@ public class MenuController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1 && Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!paused)
-            {
-                PauseGame();
-            }
-            else
-            {
-                ResumeGame();
-            }
-        }
+        
     }
 
     // Start the game
@@ -46,22 +35,6 @@ public class MenuController : MonoBehaviour {
     public void QuitGame ()
     {
         Application.Quit();
-    }
-
-    // Pauses the game
-    public void PauseGame ()
-    {
-        paused = true;
-        Time.timeScale = 0;
-        ChangeMenu(0);
-    }
-
-    // Unpauses the game
-    public void ResumeGame ()
-    {
-        paused = false;
-        Time.timeScale = 1;
-        ChangeMenu(-1);
     }
 
     // Change the menu UI in-game
