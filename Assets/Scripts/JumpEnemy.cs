@@ -20,10 +20,6 @@ public class JumpEnemy : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-		while(this.gameObject != null)
-        {
-            StartCoroutine(JumpForward());
-        }
 	}
 	
 	// Update is called once per frame
@@ -55,11 +51,5 @@ public class JumpEnemy : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-    }
-
-    IEnumerator JumpForward()
-    {
-        yield return new WaitForSeconds(JumpDelay);
-        _rigidbody2D.AddForce(new Vector2(1.0f, 2.0f));
     }
 }
