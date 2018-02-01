@@ -10,10 +10,12 @@ public class ClickTrail : MonoBehaviour {
     public static Camera cam;                               // Cam to reference for mouse pos
     public List<Vector2> path;                              // The path the trail takes
     public float maxDrawTime;                               // The max amount of time to draw
+    public AudioSource audioSource;                         // The Audio Source to use
     public Slider drawSlider;                               // The slider for the amount of draw left
     private Laser laser;                                    // The laser to use for hitting enemies
     private Beam beam;                                      // The beam to use for effects
     private float drawTime;                                 // The amount of time to draw left
+    private float lastDrawTime;                             // The last recorded amount of draw time
     private TrailRenderer _trailRenderer;                   // The Trail Renderer component attached
     //private ParticleSystem.EmissionModule _emissionModule;  // The Emission Module attached to the Particle System
     private Rigidbody2D _rigidbody2D;                       // The Rigidbody 2D component attached
@@ -43,7 +45,7 @@ public class ClickTrail : MonoBehaviour {
             StartCoroutine(ResetTrail());
             drawing = true;
         }
-        else if (!Input.GetMouseButton(0) || drawTime <= 0)
+        else if (Input.GetMouseButtonUp(0) || !Input.GetMouseButton(0) || drawTime <= 0)
         {
             drawing = false;
         }
@@ -57,6 +59,15 @@ public class ClickTrail : MonoBehaviour {
         }
         _trailRenderer.enabled = drawing;
         //_emissionModule.enabled = drawing;
+        if (lastDrawTime < drawTime && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        else if (lastDrawTime >= drawTime && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        lastDrawTime = drawTime;
     }
 
     void FixedUpdate ()
@@ -79,6 +90,7 @@ public class ClickTrail : MonoBehaviour {
     {
         drawTime = newTime;
         drawSlider.value = drawTime / maxDrawTime;
+        audioSource.pitch = 3 * drawTime / maxDrawTime;
     }
 
     // Returns true if the player is able to draw

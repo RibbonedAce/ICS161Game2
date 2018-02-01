@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(ParticleSystem))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 public class Laser : MonoBehaviour {
-    public static int combo;                            // The combo counter
+    public static int combo;                                // The combo counter
     public bool isRunning;                                  // Whether the coroutine is running
     private Rigidbody2D _rigidbody2D;                       // The Rigidbody component attached
     private ParticleSystem.EmissionModule _emissionModule;  // The Emission module of the Particle System
