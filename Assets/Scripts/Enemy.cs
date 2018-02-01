@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour {
         if (collision.CompareTag("Mouse"))
         {
             ++Laser.combo;
-            GameController.AddScore(100);
+            GameController.instance.AddScore(100);
             ChangeHealth(-1);
         }
     }

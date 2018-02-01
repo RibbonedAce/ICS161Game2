@@ -3,37 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseController : MenuController {
-    private bool paused = false;
+    private bool paused = false;    // Whether the game is paused or not
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && GameController.instance.playing)
         {
-            if (!paused)
-            {
-                PauseGame();
-            }
-            else
-            {
-                ResumeGame();
-            }
+            ChangePause();
         }
     }
 
-    // Pauses the game
-    public void PauseGame ()
+    // Pauses or unpauses the game
+    public void ChangePause ()
     {
-        paused = true;
-        Time.timeScale = 0;
-        ChangeMenu(0);
-    }
-
-    // Unpauses the game
-    public void ResumeGame ()
-    {
-        paused = false;
-        Time.timeScale = 1;
-        ChangeMenu(-1);
+        paused = !paused;
+        Time.timeScale = paused ? 0 : 1;
+        ChangeMenu(paused ? 0 : -1);
     }
 }

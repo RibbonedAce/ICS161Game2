@@ -10,19 +10,20 @@ public class SpawnEnemy : MonoBehaviour {
     public float SpawnWait;  //wait x seconds between each enemy spawn.
     public float SpawnDelay; //wait x seconds between each spawn wave.
     public int Enemies;      //total enemies spawn each wave.
-    private bool IsGameOver; 
+    public int waves;           // Amount of waves spawn before game is won
+    //private bool IsGameOver; 
 	// Use this for initialization
 	// Update is called once per frame
 	void Start ()
     {
-        IsGameOver = false;
+        //IsGameOver = false;
         StartCoroutine(SpawnEnemies());
 	}
 
     IEnumerator SpawnEnemies()
     {
         yield return new WaitForSeconds(SpawnStart);
-        while(true)
+        for (int w = 0; w < waves; ++w)
         {
             for(int i = 0; i< Enemies; i++)
             {
@@ -37,10 +38,11 @@ public class SpawnEnemy : MonoBehaviour {
                 yield return new WaitForSeconds(SpawnWait);
             }
             yield return new WaitForSeconds(SpawnDelay);
-            if (IsGameOver)
+            /*if (IsGameOver)
             {
                 break; //stop spawning if Game is over.
-            }
+            }*/
         }
+        GameController.instance.WinGame();
     }
 }

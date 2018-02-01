@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
-    public List<GameObject> menuItems;
-    public int startState;
+    public static MenuController instance;  // The instance to reference
+    public List<GameObject> menuItems;      // The list of menu items to track
+    public int startState;                  // The starting state of the menu
 
     void Awake ()
     {
+        instance = this;
         ChangeMenu(startState);
     }
 

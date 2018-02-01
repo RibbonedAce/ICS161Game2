@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
-    public static PlayerController instance;
-    public Slider slider;   // Health bar
-    public int health;      // The player's current health
-    public int maxHealth;   // The player's maximum health
+    public static PlayerController instance;    // The instance to reference
+    public Slider slider;                       // Health bar
+    public int health;                          // The player's current health
+    public int maxHealth;                       // The player's maximum health
 
     void Awake ()
     {
@@ -31,5 +31,9 @@ public class PlayerController : MonoBehaviour {
     {
         health = Mathf.Min(value, maxHealth);
         slider.value = (float)health / maxHealth;
+        if (health <= 0)
+        {
+            GameController.instance.LoseGame();
+        }
     }
 }
