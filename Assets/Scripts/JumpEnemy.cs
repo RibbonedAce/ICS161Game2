@@ -10,24 +10,27 @@ public class JumpEnemy : MonoBehaviour {
     public float speed;                 // The speed the enemy moves at
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
     public float JumpDelay;
-    private bool jump;
+    private int canJump;
+    public Vector2 Force;
+
     void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         health = maxHealth;
-        jump = false;
-        StartCoroutine(CanJump());
+        canJump = 0;
+        StartCoroutine(Jump());
     }
     // Update is called once per frame
     void Update()
     {
-        if (!jump)
+        print(canJump);
+        if (canJump == 0)
         {
             MoveForward();
         }
-        else
+        else if(canJump == 1)
         {
-            Jump();
+            _rigidbody2D.AddForce(Force,ForceMode2D.Impulse);
         }
         if (_rigidbody2D.position.y < -5)
         {
@@ -58,18 +61,14 @@ public class JumpEnemy : MonoBehaviour {
     }
     private void MoveForward()
     {
-        _rigidbody2D.MovePosition(_rigidbody2D.position + new Vector2(1.0f,-2.0f) * speed * Time.deltaTime);
+        _rigidbody2D.MovePosition(_rigidbody2D.position + new Vector2(1.0f,0.2f) * speed * Time.deltaTime);
     }
-    private void Jump()
-    {
-        _rigidbody2D.MovePosition(_rigidbody2D.position + new Vector2(0.5f, 2.0f) * speed * Time.deltaTime);
-    }
-    IEnumerator CanJump()
+    IEnumerator Jump()
     {
         yield return new WaitForSeconds(JumpDelay);
-        jump = true;
-        yield return new WaitForSeconds(JumpDelay - 0.5f);
-        jump = false;
+        canJump = 1;
+        yield return new WaitForSeconds(0.5f);
+        canJump = 2;
     }
     
 }

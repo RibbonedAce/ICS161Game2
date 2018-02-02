@@ -38,7 +38,7 @@ public class SpawnEnemy : MonoBehaviour {
                 }
                 else
                 {
-                    Vector3 SpawnPosition1 = new Vector3(-8.0f, 4.0f, 0.0f);
+                    Vector3 SpawnPosition1 = new Vector3(-10.0f, -2.0f, 0.0f);
                     Instantiate(Enemy[random], SpawnPosition1, SpawnRotation);
                 }
                 yield return new WaitForSeconds(SpawnWait);
