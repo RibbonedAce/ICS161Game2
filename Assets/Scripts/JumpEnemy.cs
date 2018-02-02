@@ -10,30 +10,34 @@ public class JumpEnemy : MonoBehaviour {
     public float speed;                 // The speed the enemy moves at
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
     public float JumpDelay;
-
-    void Awake ()
+    private bool jump;
+    void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         health = maxHealth;
+        jump = false;
+        StartCoroutine(CanJump());
     }
-
-    // Use this for initialization
-    void Start ()
+    // Update is called once per frame
+    void Update()
     {
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
+        if (!jump)
+        {
+            MoveForward();
+        }
+        else
+        {
+            Jump();
+        }
         if (_rigidbody2D.position.y < -5)
         {
             PlayerController.instance.ChangeHealth(PlayerController.instance.health - 1);
             Destroy(gameObject);
         }
-	}
+    }
 
     // When the collider hits a trigger
-    void OnTriggerEnter2D (Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Mouse"))
         {
@@ -44,7 +48,7 @@ public class JumpEnemy : MonoBehaviour {
     }
 
     // Have the enemy change its health
-    public void ChangeHealth (int delta)
+    public void ChangeHealth(int delta)
     {
         health += delta;
         if (health <= 0)
@@ -52,4 +56,20 @@ public class JumpEnemy : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+    private void MoveForward()
+    {
+        _rigidbody2D.MovePosition(_rigidbody2D.position + new Vector2(1.0f,-2.0f) * speed * Time.deltaTime);
+    }
+    private void Jump()
+    {
+        _rigidbody2D.MovePosition(_rigidbody2D.position + new Vector2(0.5f, 2.0f) * speed * Time.deltaTime);
+    }
+    IEnumerator CanJump()
+    {
+        yield return new WaitForSeconds(JumpDelay);
+        jump = true;
+        yield return new WaitForSeconds(JumpDelay - 0.5f);
+        jump = false;
+    }
+    
 }
