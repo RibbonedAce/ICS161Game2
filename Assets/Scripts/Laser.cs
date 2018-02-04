@@ -12,9 +12,11 @@ public class Laser : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;                       // The Rigidbody component attached
     private ParticleSystem.EmissionModule _emissionModule;  // The Emission module of the Particle System
     private CapsuleCollider2D _collider;                    // The Capsule Collider component attached
+    private AudioSource audio;
 
     void Awake ()
     {
+        audio = GetComponent<AudioSource>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _emissionModule = GetComponent<ParticleSystem>().emission;
         _collider = GetComponent<CapsuleCollider2D>();
@@ -29,7 +31,6 @@ public class Laser : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
     }
 
     // Go around the screen using every other coordinate
@@ -39,6 +40,7 @@ public class Laser : MonoBehaviour {
         combo = 0;
         Vector2 lastPos = new Vector2(0, 0);
         Vector2 lastPos2 = new Vector2(0, 0);
+        audio.Play();
         for (int i = 0; i < path.Count; i += 2)
         {
             _rigidbody2D.MovePosition(path[i]);

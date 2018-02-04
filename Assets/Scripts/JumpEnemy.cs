@@ -9,9 +9,9 @@ public class JumpEnemy : MonoBehaviour {
     private int health;                 // The current health of the enemy
     public float speed;                 // The speed the enemy moves at
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
-    public float JumpDelay;
-    private int canJump;
-    public Vector2 Force;
+    public float JumpDelay;             // The time it takes before starting to jump
+    private int canJump;                
+    public Vector2 Force;               // how far and high jumper can jump.
 
     void Awake()
     {
@@ -23,7 +23,6 @@ public class JumpEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        print(canJump);
         if (canJump == 0)
         {
             MoveForward();
