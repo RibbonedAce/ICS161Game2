@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   speed: 2
+  postEffect: {fileID: 1697342014714366, guid: 2b182f29cc0e8b2448f7f22d18d2a0f2, type: 2}
 --- !u!212 &212253674066736684
 SpriteRenderer:
   m_ObjectHideFlags: 1

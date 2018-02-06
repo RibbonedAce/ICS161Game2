@@ -10,7 +10,9 @@ public class ClickTrail : MonoBehaviour {
     public static Camera cam;                               // Cam to reference for mouse pos
     public List<Vector2> path;                              // The path the trail takes
     public float maxDrawTime;                               // The max amount of time to draw
-    public AudioSource audioSource;                         // The Audio Source to use
+    public AudioSource audioSource;                         // The Audio Source to use for charging
+    public AudioClip chargeClip;                            // The Audio Clip to use for charging
+    public AudioClip targetClip;                            // The Audio Clip to use for targeting
     public Slider drawSlider;                               // The slider for the amount of draw left
     private Laser laser;                                    // The laser to use for hitting enemies
     private Beam beam;                                      // The beam to use for effects
@@ -59,11 +61,22 @@ public class ClickTrail : MonoBehaviour {
         }
         _trailRenderer.enabled = drawing;
         //_emissionModule.enabled = drawing;
-        if (lastDrawTime < drawTime && !audioSource.isPlaying)
+        if (lastDrawTime != drawTime)
         {
-            audioSource.Play();
+            if (lastDrawTime < drawTime)
+            {
+                audioSource.clip = chargeClip;
+            }
+            else if (lastDrawTime > drawTime)
+            {
+                audioSource.clip = targetClip;
+            }
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
-        else if (lastDrawTime >= drawTime && audioSource.isPlaying)
+        else if (audioSource.isPlaying)
         {
             audioSource.Stop();
         }

@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     public int maxHealth;               // The starting health of the enemy
     private int health;                 // The current health of the enemy
     public float speed;                 // The speed the enemy moves at
+    public GameObject postEffect;   // The post-death effect to use
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
 
     void Awake ()
@@ -50,8 +51,16 @@ public class Enemy : MonoBehaviour {
         health += delta;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    // Die and spawn a posteffect
+    public void Die ()
+    {
+        AudioSource a = Instantiate(postEffect, transform.position, Quaternion.identity).GetComponent<AudioSource>();
+        a.pitch = 20f / (20 - Mathf.Min(Laser.combo, 10));
+        Destroy(gameObject);
     }
 
     private void MoveDown()
