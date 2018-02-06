@@ -8,10 +8,10 @@ public class Enemy : MonoBehaviour {
     public int maxHealth;               // The starting health of the enemy
     private int health;                 // The current health of the enemy
     public float speed;                 // The speed the enemy moves at
-    public GameObject postEffect;   // The post-death effect to use
-    private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
+    public GameObject postEffect;       // The post-death effect to use
+    protected Rigidbody2D _rigidbody2D; // The Rigidbody component attached
 
-    void Awake ()
+    protected virtual void Awake ()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         health = maxHealth;
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	protected virtual void Update ()
     {
         MoveDown();
         if (_rigidbody2D.position.y < -5)

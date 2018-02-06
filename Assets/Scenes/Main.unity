@@ -1229,7 +1229,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1663100164
+  randomSeed: 1010818519
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6808,6 +6808,7 @@ MonoBehaviour:
   Enemy:
   - {fileID: 1932472423704378, guid: fea7b41b3504a164bb9abb4ab1ad5eae, type: 2}
   - {fileID: 1932472423704378, guid: 9644ca157f8429a40a3acb07b77ec475, type: 2}
+  - {fileID: 1865463257750330, guid: 68a66f5077760ab499280181597e138f, type: 2}
   SpawnLocation: {x: 8, y: 4, z: 0}
   SpawnStart: 2
   SpawnWait: 0.5

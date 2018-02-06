@@ -31,7 +31,7 @@ public class SpawnEnemy : MonoBehaviour {
             for (int i = 0; i< Enemies; i++)
             {
                 Quaternion SpawnRotation = Quaternion.identity;
-                if (random == 0)
+                if (random == 0 || random == 2)
                 {
                     Vector3 SpawnPosition = new Vector3
                     (
