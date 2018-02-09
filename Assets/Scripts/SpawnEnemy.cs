@@ -12,6 +12,7 @@ public class SpawnEnemy : MonoBehaviour {
     public int Enemies;      //total enemies spawn each wave.
     public int waves;        // Amount of waves spawn before game is won
     public GameObject[] spawnLocation; //Spawn Locations for jumper.
+    public WaveDisplay displayText;     // Text to display the waves
 	void Start ()
     {
         StartCoroutine(SpawnEnemies());
@@ -22,6 +23,7 @@ public class SpawnEnemy : MonoBehaviour {
         yield return new WaitForSeconds(SpawnStart);
         for (int w = 0; w < waves; ++w)
         {
+            StartCoroutine(displayText.DisplayText((w+1).ToString() + "/" + waves.ToString(), 2));
             //int random = 1;
             //int spawnRandom = 0;
             int random = Random.Range(0, Enemy.Length);
