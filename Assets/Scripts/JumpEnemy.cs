@@ -11,7 +11,7 @@ public class JumpEnemy : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
     public float JumpDelay;             // The time it takes before starting to jump
     private int canJump;                
-    public Vector2 Force;               // how far and high jumper can jump.
+    //public Vector2 Force;               // how far and high jumper can jump.
 
     void Awake()
     {
@@ -29,6 +29,9 @@ public class JumpEnemy : MonoBehaviour {
         }
         else if(canJump == 1)
         {
+            float xDir = 0.2f;
+            float yDir = Random.Range(0.3f, 0.5f);
+            Vector2 Force = new Vector2(xDir, yDir);
             _rigidbody2D.AddForce(Force,ForceMode2D.Impulse);
         }
         if (_rigidbody2D.position.y < -5)

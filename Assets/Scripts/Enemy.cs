@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     public int maxHealth;               // The starting health of the enemy
     private int health;                 // The current health of the enemy
     public float speed;                 // The speed the enemy moves at
+    private float maxSpeed;
     public GameObject postEffect;       // The post-death effect to use
     protected Rigidbody2D _rigidbody2D; // The Rigidbody component attached
 
@@ -15,6 +16,7 @@ public class Enemy : MonoBehaviour {
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         health = maxHealth;
+        maxSpeed = 6.0f;
     }
 
     // Use this for initialization
@@ -66,6 +68,7 @@ public class Enemy : MonoBehaviour {
     private void MoveDown()
     {
         Vector2 velocity = new Vector2(0.0f, -1.0f);
+        speed = Random.Range(speed, maxSpeed);
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity * speed * Time.deltaTime);
     }
 }

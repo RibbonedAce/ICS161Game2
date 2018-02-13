@@ -23,7 +23,9 @@ public class SpawnEnemy : MonoBehaviour {
         yield return new WaitForSeconds(SpawnStart);
         for (int w = 0; w < waves; ++w)
         {
+            PlayerController.instance.ChangeHealth(PlayerController.instance.health + 2);
             StartCoroutine(displayText.DisplayText((w+1).ToString() + "/" + waves.ToString(), 2));
+            Enemies = Enemies + (w) * 2;
             //int random = 1;
             //int spawnRandom = 0;
             int random = Random.Range(0, Enemy.Length);

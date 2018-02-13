@@ -57,7 +57,7 @@ public class ClickTrail : MonoBehaviour {
         }
         else if (!laser.isRunning)
         {
-            UpdateTime(Mathf.Min(drawTime + maxDrawTime * Time.deltaTime / 2, maxDrawTime));
+            UpdateTime(Mathf.Min(drawTime + maxDrawTime * Time.deltaTime / 6, maxDrawTime));
         }
         _trailRenderer.enabled = drawing;
         //_emissionModule.enabled = drawing;

@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1917493634}
   health: 0
-  maxHealth: 5
+  maxHealth: 10
 --- !u!114 &58370874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6892,9 +6892,9 @@ MonoBehaviour:
   SpawnLocation: {x: 8, y: 4, z: 0}
   SpawnStart: 2
   SpawnWait: 0.5
-  SpawnDelay: 2
-  Enemies: 10
-  waves: 999
+  SpawnDelay: 1
+  Enemies: 8
+  waves: 10
   spawnLocation:
   - {fileID: 1083553557}
   - {fileID: 682436328}
