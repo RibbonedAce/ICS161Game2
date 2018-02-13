@@ -5199,7 +5199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: []
-  maxDrawTime: 10
+  maxDrawTime: 2
   audioSource: {fileID: 402260502}
   chargeClip: {fileID: 8300000, guid: 2a5a213e33d04e249ade6793ea55d831, type: 3}
   targetClip: {fileID: 8300000, guid: e0e56e0928605084eba0448803fefed7, type: 3}

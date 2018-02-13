@@ -598,13 +598,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Click and drag to draw laser''s path, release to fire laser in path.
+  m_Text: 'Left-click and drag to draw laser''s path, release to fire laser in path.
 
     Draw the laser to fire at the robots and destroy them.
 
     You have only a certain amount of laser to use at a time.
 
-    Don''t let the robots reach the bottom of the screen.'
+    Don''t let the robots reach the bottom of the screen.
+
+    Press ESC to pause the game.'
 --- !u!222 &197955545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1238,32 +1240,32 @@ Prefab:
     - target: {fileID: 224042259504094996, guid: c7e104431c90ea342aef65ea68dd308f,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.84
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224590500844223842, guid: c7e104431c90ea342aef65ea68dd308f,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.84
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224590500844223842, guid: c7e104431c90ea342aef65ea68dd308f,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.84
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224845443414980106, guid: c7e104431c90ea342aef65ea68dd308f,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.84
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224927543619485190, guid: c7e104431c90ea342aef65ea68dd308f,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.84
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224927543619485190, guid: c7e104431c90ea342aef65ea68dd308f,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.84
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7e104431c90ea342aef65ea68dd308f, type: 2}
