@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 58370873}
   - component: {fileID: 58370875}
   - component: {fileID: 58370876}
+  - component: {fileID: 58370877}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -465,6 +466,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &58370877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 58370871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae425bccac9297749aad02da8603e1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &133875097
 GameObject:
   m_ObjectHideFlags: 0
@@ -6893,8 +6905,8 @@ MonoBehaviour:
   SpawnLocation: {x: 8, y: 4, z: 0}
   SpawnStart: 5
   SpawnWait: 0.5
-  SpawnDelay: 1
-  Enemies: 8
+  SpawnDelay: 4
+  Enemies: 10
   waves: 10
   spawnLocation:
   - {fileID: 1083553557}

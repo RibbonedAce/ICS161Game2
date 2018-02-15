@@ -1041,6 +1041,9 @@ MonoBehaviour:
   m_Text: 'You are controlling a laser to fend off robots.
 
 
+    The robots will come in waves.
+
+
     The laser has to be targeted before firing and cannot be fired all the time.
 
 
@@ -2994,12 +2997,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Laser mechanics
+  m_Text: 'Made by:
 
     Tyler Gemora
-
-
-    Enemy mechanics
 
     Khoa Nguyen'
 --- !u!222 &642387079
@@ -4185,7 +4185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &985730801
 RectTransform:
   m_ObjectHideFlags: 0
