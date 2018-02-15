@@ -16,7 +16,7 @@ public class ClickTrail : MonoBehaviour {
     public Slider drawSlider;                               // The slider for the amount of draw left
     private Laser laser;                                    // The laser to use for hitting enemies
     private Beam beam;                                      // The beam to use for effects
-    private float drawTime;                                 // The amount of time to draw left
+    public float drawTime;                                 // The amount of time to draw left
     private float lastDrawTime;                             // The last recorded amount of draw time
     private TrailRenderer _trailRenderer;                   // The Trail Renderer component attached
     //private ParticleSystem.EmissionModule _emissionModule;  // The Emission Module attached to the Particle System
@@ -99,7 +99,7 @@ public class ClickTrail : MonoBehaviour {
     }
 
     // Update the draw time and the slider
-    private void UpdateTime (float newTime)
+    public void UpdateTime (float newTime)
     {
         drawTime = newTime;
         drawSlider.value = drawTime / maxDrawTime;

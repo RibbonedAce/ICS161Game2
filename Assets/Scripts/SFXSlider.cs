@@ -17,6 +17,7 @@ public class SFXSlider : MonoBehaviour {
     void Start ()
     {
         controller = GameObject.Find("AudioController").GetComponent<AudioController>();
+        _slider.value = controller.sfxVolume;
         _slider.onValueChanged.AddListener(delegate { controller.changeSfx(_slider.value); });
 	}
 	

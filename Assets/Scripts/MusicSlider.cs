@@ -17,6 +17,7 @@ public class MusicSlider : MonoBehaviour {
     void Start ()
     {
         controller = GameObject.Find("AudioController").GetComponent<AudioController>();
+        _slider.value = controller.musicVolume;
         _slider.onValueChanged.AddListener(delegate { controller.changeMusic(_slider.value); });
     }
 

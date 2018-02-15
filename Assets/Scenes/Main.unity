@@ -1329,7 +1329,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -709330000
+  randomSeed: -618340858
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5204,6 +5204,7 @@ MonoBehaviour:
   chargeClip: {fileID: 8300000, guid: 2a5a213e33d04e249ade6793ea55d831, type: 3}
   targetClip: {fileID: 8300000, guid: e0e56e0928605084eba0448803fefed7, type: 3}
   drawSlider: {fileID: 844138324}
+  drawTime: 0
 --- !u!50 &897266650
 Rigidbody2D:
   serializedVersion: 4
@@ -6890,7 +6891,7 @@ MonoBehaviour:
   - {fileID: 1932472423704378, guid: 9644ca157f8429a40a3acb07b77ec475, type: 2}
   - {fileID: 1865463257750330, guid: 68a66f5077760ab499280181597e138f, type: 2}
   SpawnLocation: {x: 8, y: 4, z: 0}
-  SpawnStart: 2
+  SpawnStart: 5
   SpawnWait: 0.5
   SpawnDelay: 1
   Enemies: 8

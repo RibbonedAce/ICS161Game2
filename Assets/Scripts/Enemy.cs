@@ -5,11 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour {
+    public static ClickTrail trail;     // The clicktrail to use
+    private static Camera cam;          // The camera to use for space conversion
+    private static Transform canvas;    // The canvas to spawn the after-effect on
     public int maxHealth;               // The starting health of the enemy
-    private int health;                 // The current health of the enemy
+    protected int health;               // The current health of the enemy
     public float speed;                 // The speed the enemy moves at
     private float maxSpeed;
     public GameObject postEffect;       // The post-death effect to use
+    public GameObject textEffect;       // The UI-based effect to use
     protected Rigidbody2D _rigidbody2D; // The Rigidbody component attached
 
     protected virtual void Awake ()
@@ -22,7 +26,18 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-		
+        if (cam == null)
+        {
+            cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        }
+        if (canvas == null)
+        {
+            canvas = GameObject.Find("Canvas").transform;
+        }
+		if (trail == null)
+        {
+            trail = GameObject.Find("Trail").GetComponent<ClickTrail>();
+        }
 	}
 	
 	// Update is called once per frame
@@ -37,11 +52,11 @@ public class Enemy : MonoBehaviour {
 	}
 
     // When the collider hits a trigger
-    void OnTriggerEnter2D (Collider2D collision)
+    protected void OnTriggerEnter2D (Collider2D collision)
     {
         if (collision.CompareTag("Mouse"))
-        {
-            ++Laser.combo;
+        { 
+            trail.UpdateTime(trail.drawTime + trail.maxDrawTime * 0.05f * (++Laser.combo - 1));
             GameController.instance.AddScore(100);
             ChangeHealth(-1);
         }
@@ -61,7 +76,8 @@ public class Enemy : MonoBehaviour {
     public void Die ()
     {
         AudioSource a = Instantiate(postEffect, transform.position, Quaternion.identity).GetComponent<AudioSource>();
-        a.pitch = 20f / (20 - Mathf.Min(Laser.combo, 10));
+        a.pitch = 20f / (20 - Mathf.Max(Laser.combo, 10));
+        Instantiate(textEffect, cam.WorldToScreenPoint(transform.position), Quaternion.identity, canvas);
         Destroy(gameObject);
     }
 
